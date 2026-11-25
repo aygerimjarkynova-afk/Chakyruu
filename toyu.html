@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="ky">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Нүзүпбек жана Арзыгүл</title>
+<style>
+body{margin:0;background:#f5f0e7;color:#806b50;font-family:Georgia,serif;text-align:center}
+main{max-width:450px;margin:auto;padding:35px 20px;background:#fffdf8;min-height:100vh;border:5px double #c6ae83}
+h1{font-size:38px;color:#a78b5c;font-weight:normal;line-height:1.5}
+h2{font-weight:normal;color:#a78b5c}
+p{line-height:1.8}
+.photo{width:100%;aspect-ratio:4/5;object-fit:cover;border:5px solid white;outline:1px solid #c6ae83}
+.line{border-top:1px solid #d8c8a8;border-bottom:1px solid #d8c8a8;padding:20px 5px;margin:25px 0}
+.date{font-size:29px;color:#a78b5c}
+.timer{display:flex;justify-content:center;gap:8px}
+.time{background:#f0e9dc;padding:12px 8px;border-radius:7px;flex:1}
+.time b{display:block;font-size:24px}
+button{width:100%;padding:14px;margin:7px 0;background:#f0e9dc;border:1px solid #bba276;color:#806b50;font-size:15px;cursor:pointer}
+</style>
+</head>
+<body>
+<main>
+<p>✧ ❀ ✧</p>
+<p>УРМАТТУУ КААЛУУ КОНУКТОР!</p>
+<h2>Сиздерди үйлөнүү тоюбузга чакырабыз</h2>
+<h1>Нүзүпбек<br>&<br>Арзыгүл</h1>
+
+<img class="photo" src="images/couple.jpg" alt="Жаштар">
+
+<p>Сиздердин катышууңуздар биз үчүн чоң кубаныч!</p>
+
+<div class="line">
+<p>SAVE THE DATE</p>
+<div class="date">13 ДЕКАБРЬ</div>
+<h2>2026-жыл</h2>
+<p>Саат 16:00</p>
+<p>Дареги: Разьезд</p>
+<p>Ресторан: Сумая ГРАНД</p>
+</div>
+
+<h2>Той ээлери</h2>
+<p>Жаркынали жана Жумагүл</p>
+
+<h2>Тойго чейин калды</h2>
+<div class="timer">
+<div class="time"><b id="d">0</b>КҮН</div>
+<div class="time"><b id="h">0</b>СААТ</div>
+<div class="time"><b id="m">0</b>МҮНӨТ</div>
+<div class="time"><b id="s">0</b>СЕКУНД</div>
+</div>
+
+<div class="line">
+<h2>Катышууңузду ырастаңыз</h2>
+<button onclick="reply('Ооба, сөзсүз келем')">✓ Ооба, келем</button>
+<button onclick="reply('Бара албайм')">✕ Бара албайм</button>
+</div>
+
+<p>✧ Кубанычыбызды биз менен бөлүшүңүз! ✧</p>
+
+<audio id="music" loop src="music/toi.mp3"></audio>
+<button onclick="playMusic()">♫ Музыканы угуу</button>
+</main>
+
+<script>
+const target=new Date("2026-12-13T16:00:00+06:00").getTime();
+function countdown(){
+let t=Math.max(0,target-Date.now());
+document.getElementById("d").textContent=Math.floor(t/86400000);
+document.getElementById("h").textContent=Math.floor(t/3600000)%24;
+document.getElementById("m").textContent=Math.floor(t/60000)%60;
+document.getElementById("s").textContent=Math.floor(t/1000)%60;
+}
+countdown();setInterval(countdown,1000);
+
+function playMusic(){
+let a=document.getElementById("music");
+if(a.paused)a.play().catch(()=>alert("Музыка файлын кошуңуз"));
+else a.pause();
+}
+function reply(answer){
+let phone="996772380182";
+let msg="Нүзүпбек жана Арзыгүлдүн тою: "+answer;
+window.open("https://wa.me/"+phone+"?text="+encodeURIComponent(msg),"_blank");
+}
+</script>
+</body>
+</html>
